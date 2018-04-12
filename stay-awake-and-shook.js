@@ -3,18 +3,19 @@
 var aud = document.createElement("audio");
 aud.setAttribute("src", "loud-alarm-buzzer.mp3");
 aud.setAttribute("preload", "auto");
+aud.id = "saas-audio";
 aud.loop = true;
 var time = 0.17;
 var timeout;
 
 
-function init() {
+function saasInit() {
   document.body.appendChild(aud);
   document.addEventListener("mousemove", clearThisTimeout);
   document.addEventListener("keypress", clearThisTimeout);
   var m = prompt("How many minutes?", "0.1");
   if (m === "quit") {
-    quit();
+    saasQuit();
   }
   else {
     startTimeout(m);
@@ -24,7 +25,7 @@ function init() {
 var clearThisTimeout = function() {
   clearTimeout(timeout);
   startTimeout(time);
-}
+};
 
 function startTimeout(t) {
   setTime(t);
@@ -41,7 +42,7 @@ function shook(a) {
   a.currentTime = 0;
   var m = prompt("How many minutes?", "0.1");
   if (m === "quit") {
-    quit();
+    saasQuit();
   }
   else {
     startTimeout(m);
@@ -53,7 +54,7 @@ function setTime(t) {
   return parseInt(t * 60000);
 }
 
-function quit() {
+function saasQuit() {
   console.log("goodbye and goodnight <3");
   aud.pause();
   clearTimeout(timeout);
