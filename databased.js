@@ -9,7 +9,7 @@ submit.addEventListener("click", update);
 function update() {
 	var request = input.value.trim();
 	var v = database.ref(request).once("value").then(function(snapshot) {
-		results.textContent = snapshot.val();
+		results.textContent = snapshot.val().fill;
 	});
 	results.textContent += " STOP";
 }
