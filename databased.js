@@ -9,7 +9,12 @@ submit.addEventListener("click", update);
 function update() {
 	var request = input.value.trim();
 	var v = database.ref(request).once("value").then(function(snapshot) {
-		results.textContent = snapshot.val().fill;
+		if (snapshot.exists()) {
+			results.innerHTML = snapshot.val().fill;
+			results.innerHTML += " STOP";
+		}
+		else {
+			results.innerHTML = "does not exist";
+		}
 	});
-	results.textContent += " STOP";
 }
