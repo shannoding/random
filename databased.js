@@ -9,10 +9,10 @@ submit.addEventListener("click", update);
 function update() {
 	var request = input.value.trim();
 	var v = database.ref(request).once("value");
-	if (v.exists()) {
+	//if (v.exists()) {
 		results.textContent = v.val();
-	}
-	else {
-		results.textContent = "doesn't exist";
-	}
+	//}
+	//else {
+		//results.textContent = "doesn't exist";
+	//}
 }
